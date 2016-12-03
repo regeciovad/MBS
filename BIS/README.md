@@ -1,7 +1,7 @@
-[Deník pirátské lodi Black Cats]
+## DenÃ­k pirÃ¡tskÃ© lodi Black Cats
 
-Popis: Pøíbìh stateènıch pirátù pátrajících po tajemství ostrovù Mystery of BIS (Bezpeènost informaèních systémù). Pokud se jim podaøí najít všechny kousky tajemství, získají neuvìøitelnou moc (a snad i dost bodù na absolvování pøedmìtu). Po krku jim však jde nebezpeènı Èernovous (garant). Podaøí se jim získat vèas celé tajemství?
+**Popis**: PÅ™Ã­bÄ›h stateÄnÃ½ch pirÃ¡tÅ¯ pÃ¡trajÃ­cÃ­ch po tajemstvÃ­ ostrovÅ¯ Mystery of BIS (BezpeÄnost informaÄnÃ­ch systÃ©mÅ¯). Pokud se jim podaÅ™Ã­ najÃ­t vÅ¡echny kousky tajemstvÃ­, zÃ­skajÃ­ neuvÄ›Å™itelnou moc (a snad i dost bodÅ¯ na absolvovÃ¡nÃ­ pÅ™edmÄ›tu). Po krku jim vÅ¡ak jde nebezpeÄnÃ½ ÄŒernovous (garant). PodaÅ™Ã­ se jim zÃ­skat vÄas celÃ© tajemstvÃ­?
 
-Úèinkují: Bezejmennı kapitán Black Cats, Googleit, Tcpdump, rybáø Nmap, Johnny WIS Wilde, kocour Micek a další.
+**ÃšÄinkujÃ­**: BezejmennÃ½ kapitÃ¡n Black Cats, Googleit, Tcpdump, rybÃ¡Å™ Nmap, Johnny WIS Wilde, kocour Micek a dalÅ¡Ã­.
 
-Pøi sepisování dokumentu nebylo ublíeno jediné lahvi rumu.
+PÅ™i sepisovÃ¡nÃ­ dokumentu nebylo ublÃ­Å¾eno jedinÃ© lahvi rumu.
