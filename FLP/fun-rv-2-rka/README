@@ -1,0 +1,47 @@
+-- FLP projekt za rok 2016/2017
+-- Funkcionální projekt v jazyce Haskell
+-- Varianta rv-2-rka
+-- Vypracovala Dominika Regéciová, xregec00
+
+# Popis projektu
+Úkolem bylo vytvořit program v jazyku Haskell, který přijímá regulární výraz
+v postfixové notaci a převádí jej na rozšířený konečný automat.
+Vstupem je buď textový soubor, nebo stdin.
+Program má dvě možné zpracování vstupu. Při zadání argumentu -r pouze načte vstup do stromové struktury
+a znovu jej vypíše jako postfixový regulární výraz. Při volbě -t vypíše rozšířený konečný automat.
+
+# Překlad
+Překlad probíhá pomocí příkazu gmake, dále lze použít příkazu gmake doc na vygenerování
+dokumentace a gmake clean na uklizení kompilovaných souborů.
+
+# Načítání regulárního výrazu
+Pro ukládání regulárního výrazu jsem zvolila neúplný binární strom, který ukládá 
+své podstromy v prefixové podobě (operátor * má pouze pravý podstrom).
+Vím, že při práci se stromem používám méně efektivní algoritmy (viz komentář u showTree),
+toto řešení se mi ale zdá čitelnější, pro mě přehlednější na vytvoření a navíc nepředpokládám
+tak velký RV, že by se výrazně projevil rozdíl časové složitosti.
+
+# Vytváření RKA
+Při vytváření RKA jsem se řídila algoritmem uvedeným v opoře TINu a jeho následnou demonstrací ve stejném zdroji.
+Nejdříve si projdu strom a spočítám, kolik budu potřebovat stavů na RKA. To lze zjistit dopředu - každý symbol
+potřebuje 2 stavy, + a * přidávají 2 stavy a . spojuje 2 „podautomaty“, přičemž se 1 stav vypustí.
+Protože čísluji stavy od 0, před dalšími kroky od výsledku odečtu 1.
+Tímto výpočtem dopředu vím množinu stavů, počáteční a koncový stav, který je zde jediný - poslední.
+Poté už spouštím funkci, která má za úkol pouze vytvořit množinu stavů.
+Abych se vyhnula problémům s číslováním stavů, spolu se stromem pro RV a seznamem pravidel si posílám
+i aktuální "počáteční" a "koncový" symbol. Rekurzivně procházím strom a dle operace volím,
+jak se volají jeho podstromy. U * a + vím, že mi vytváří stav před podstromy (podstromem)
+a tak je volám s počátečním stavem + 1. Podstromy mi pak vracejí potvrzení svého začátku a svůj koncový stav,
+tedy kolik stavů "vypotřebovali". Po návratu ještě přidám pravidla k současné operaci, opět podle
+pomocných hraničních stavů. Díky tomu pravidla pouze přidávám a už je nemusím zpětně měnit, jak je uvedeno v algoritmu, kde se stavy přepisují. V příkladu už k tomu však nedochází – odtud můj nápad na mé řešení.
+
+# Výpis RKA
+Vracený seznam pravidel je mírně v neuspořádaném stavu, proto ho je třeba před výpisem seřadit.
+Pro řazení podle více klíčů jsem se inspirovala na stránkách:
+http://martijn.van.steenbergen.nl/journal/2008/12/21/comparing-multiple-criteria/
+
+# Testování
+Součást odevzdávaných souborů je i skript test.sh a složka /tests, která obsahuje některé ze testovaných
+vstupů při tvorbě programu. Spouští se pomocí ./test.sh 14, kde 14 je číslo testů 
+(vždy pojmenované jako testX.in a testX.out). Program kontroluje jak variantu -r, tak -t
+a dělá kontrolní výpis, zda testy prochází. Nakonec po sobě uklidí.
